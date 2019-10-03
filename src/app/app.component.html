@@ -1,35 +1,30 @@
 <div class="m-4">
-  <button class="btn btn-primary m-2" (click)="openModalCreate(createModal)">New event</button>
+  <button class="btn btn-secondary m-2" (click)="openModalCreate(createModal)">New event</button>
   <full-calendar #calendar defaultView="dayGridMonth" [plugins]="calendarPlugins"
                  [events]="calendarEvents" (eventClick)="openModalEdit($event, editModal)"></full-calendar>
-
-
 </div>
+
 <ng-template #editModal>
-  <div class="modal-header">Edit event</div>
+  <div class="modal-header justify-content-center">Edit Event</div>
   <div class="modal-body">
-    <div class="form-group" [formGroup]="form">
-      <label for="nameEdit">Name event</label>
-      <input type="text" id="nameEdit" class="form-control" placeholder="Name event" formControlName="title">
-      <label for="dateEdit" class="mt-2">Date event</label>
-      <input bsDatepicker id="dateEdit" formControlName="date" class="form-control" placeholder="Date event">
+    <div class="form-group m-0" [formGroup]="form">
+      <input type="text" id="nameEdit" class="form-control" placeholder="Event Name" formControlName="title">
+      <input bsDatepicker id="dateEdit" formControlName="date" class="form-control mt-3" placeholder="Event Date">
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-outline-danger" (click)="openedModal.hide(); currentEvent.remove();">Delete</button>
+    <button class="btn btn-outline-danger" (click)="delete()">Delete</button>
     <button class="btn btn-warning" (click)="openedModal.hide(); form.reset()">Close</button>
-    <button class="btn btn-success" (click)="editEvent()" [disabled]="form.invalid">Edit</button>
+    <button class="btn btn-success" (click)="editEvent()" [disabled]="form.invalid">Save</button>
   </div>
 </ng-template>
 
 <ng-template #createModal>
-  <div class="modal-header">Create event</div>
+  <div class="modal-header justify-content-center">Create Event</div>
   <div class="modal-body">
-    <div class="form-group" [formGroup]="form">
-      <label for="name">Name event</label>
-      <input type="text" id="name" class="form-control" placeholder="Name event" formControlName="title">
-      <label for="date" class="mt-2">Date event</label>
-      <input bsDatepicker id="date" formControlName="date" class="form-control" placeholder="Date event">
+    <div class="form-group m-0" [formGroup]="form">
+      <input type="text" id="name" class="form-control" placeholder="Event Name" formControlName="title">
+      <input bsDatepicker id="date" formControlName="date" class="form-control mt-3" placeholder="Event Date">
     </div>
   </div>
   <div class="modal-footer">
